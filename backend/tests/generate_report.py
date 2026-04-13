@@ -225,7 +225,10 @@ def main():
     # 生成带日期和版本的文件名
     test_date = datetime.now().strftime("%Y-%m-%d")
     version = get_version()
-    output_path = f"/Users/xieyuxin/Downloads/工作todo/backend/tests/TEST_REPORT_{test_date}_{version}.xlsx"
+    import os
+    reports_dir = "/Users/xieyuxin/Downloads/工作todo/reports"
+    os.makedirs(reports_dir, exist_ok=True)
+    output_path = f"{reports_dir}/BACKEND_TEST_REPORT_{test_date}_{version}.xlsx"
 
     passed, failed, total = create_excel_report(test_results, output_path, version)
 
